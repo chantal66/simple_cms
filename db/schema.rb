@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711161140) do
+ActiveRecord::Schema.define(version: 20170712214600) do
+
+  create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "first_name", limit: 25
+    t.string "last_name", limit: 50
+    t.string "email", limit: 100, default: "", null: false
+    t.string "username", limit: 25
+    t.string "hashed_password", limit: 40
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_admin_users_on_username"
+  end
 
   create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "subject_id"
@@ -40,15 +51,6 @@ ActiveRecord::Schema.define(version: 20170711161140) do
     t.string "name"
     t.integer "position"
     t.boolean "visible", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "first_name", limit: 25
-    t.string "last_name", limit: 50
-    t.string "email", default: "", null: false
-    t.string "password", limit: 40
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
