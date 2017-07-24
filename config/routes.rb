@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-
   root 'demo#index'
 
-  get 'demo/index'
-  get 'demo/hello'
-  get 'demo/other_hello'
+  resources :subjects do
+    member do
+      get :delete
+    end
+  end
 end
