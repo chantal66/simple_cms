@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Website title</title>
+      <title>Simple CMS: <%= @page_title || 'Admin Area' %></title>
   </head>
   <body>
-
+  <% if !flash[:notice].blank? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
   <%= yield %>
 
   </body>
